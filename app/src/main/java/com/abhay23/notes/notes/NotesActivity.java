@@ -11,6 +11,7 @@ import com.abhay23.notes.BaseActivity;
 import com.abhay23.notes.BasePresenter;
 import com.abhay23.notes.R;
 import com.abhay23.notes.di.Injector;
+import com.abhay23.notes.edit_note.EditNoteActivity;
 import com.abhay23.notes.model.Note;
 import java.util.List;
 import javax.inject.Inject;
@@ -54,6 +55,7 @@ public class NotesActivity extends BaseActivity
   @Override public void onNoteUpdated(@NonNull Note note) {
     notesRecyclerView.setVisibility(View.VISIBLE);
     noNotesErrorView.setVisibility(View.GONE);
+    // This should not be happening here. Use more detailed update listeners in the model
     if (adapter.getNotes().contains(note)) {
       adapter.updateNote(note);
     } else {
@@ -67,6 +69,6 @@ public class NotesActivity extends BaseActivity
   }
 
   @Override public void onClick(Note note, int position) {
-
+    EditNoteActivity.start(this, note.getId());
   }
 }

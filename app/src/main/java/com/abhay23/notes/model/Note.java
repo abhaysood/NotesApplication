@@ -20,6 +20,10 @@ public class Note implements Parcelable {
     this.imagePath = imagePath;
   }
 
+  public long getId() {
+    return id;
+  }
+
   public String getTitle() {
     return title;
   }
