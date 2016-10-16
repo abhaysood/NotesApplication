@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+  compileSdkVersion 24
+  buildToolsVersion "24.0.2"
+  defaultConfig {
+    applicationId "com.abhay23.notes"
+    minSdkVersion 19
+    targetSdkVersion 24
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  compile 'com.android.support:appcompat-v7:24.2.1'
+  compile 'com.android.support:recyclerview-v7:24.2.1'
+  compile 'com.android.support:design:24.2.1'
+  compile "com.android.support:cardview-v7:24.2.1"
+
+  compile 'com.github.bumptech.glide:glide:3.7.0'
+
+  apt 'com.google.dagger:dagger-compiler:2.5'
+  compile 'com.google.dagger:dagger:2.5'
+  provided 'javax.annotation:jsr250-api:1.0'
+
+  compile 'io.reactivex:rxandroid:1.2.1'
+  compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+  compile 'io.reactivex:rxjava:1.1.9'
+
+  compile "com.jakewharton:butterknife:7.0.1"
+}

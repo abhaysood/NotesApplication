@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_small"
+      android:layout_marginStart="@dimen/spacing_normal"
+      tools:src="@mipmap/ic_launcher"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingBottom="@dimen/spacing_small"
+      android:paddingLeft="@dimen/spacing_medium"
+      android:paddingRight="@dimen/spacing_medium"
+      android:paddingTop="@dimen/spacing_small">
+
+    <TextView
+        android:id="@+id/note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        tools:text="Title"/>
+
+    <TextView
+        android:id="@+id/note_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="@dimen/text_small"
+        tools:text="Some very long description about the note which can only go max 2 lines and will ellipsize at the end."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_tiny"
+        android:textStyle="italic"
+        tools:text="12th Jan 2016, 10:10 PM"/>
+
+  </LinearLayout>
+
+</LinearLayout>
