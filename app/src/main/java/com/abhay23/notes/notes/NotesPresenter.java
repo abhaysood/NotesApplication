@@ -1,8 +1,10 @@
 package com.abhay23.notes.notes;
 
+import android.support.annotation.NonNull;
 import com.abhay23.notes.BasePresenter;
 import com.abhay23.notes.model.Note;
 import com.abhay23.notes.model.NotesManager;
+import com.abhay23.notes.util.RxUtils;
 import java.util.List;
 import rx.Observable;
 
@@ -10,10 +12,12 @@ class NotesPresenter extends BasePresenter {
 
   private final NotesView view;
   private final NotesManager notesManager;
+  private final RxUtils rxUtils;
 
-  NotesPresenter(NotesView view, NotesManager notesManager) {
+  NotesPresenter(NotesView view, NotesManager notesManager, RxUtils rxUtils) {
     this.view = view;
     this.notesManager = notesManager;
+    this.rxUtils = rxUtils;
   }
 
   @Override public void onViewCreated(boolean isNewLaunch) {
@@ -23,11 +27,12 @@ class NotesPresenter extends BasePresenter {
       notesManager.getNotes()
           .flatMap(Observable::from)
           .toSortedList(this::compareCreationDate)
+          .compose(rxUtils.applySchedulers())
           .subscribe(this::onNotesLoaded, this::onErrorLoadingNotes);
     }
   }
 
-  private void onNotesLoaded(List<Note> notes) {
+  private void onNotesLoaded(@NonNull List<Note> notes) {
     view.showNotes(notes);
   }
 

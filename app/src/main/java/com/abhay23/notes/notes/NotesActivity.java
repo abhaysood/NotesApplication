@@ -25,7 +25,7 @@ public class NotesActivity extends BaseActivity implements NotesView {
   @Override public void initView() {
   }
 
-  @Override public void showNotes(List<Note> notes) {
+  @Override public void showNotes(@NonNull List<Note> notes) {
 
   }
 }

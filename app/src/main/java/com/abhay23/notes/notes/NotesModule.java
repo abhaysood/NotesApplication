@@ -1,6 +1,8 @@
 package com.abhay23.notes.notes;
 
 import com.abhay23.notes.di.ActivityScope;
+import com.abhay23.notes.model.NotesManager;
+import com.abhay23.notes.util.RxUtils;
 import dagger.Module;
 import dagger.Provides;
 
@@ -13,8 +15,8 @@ import dagger.Provides;
 
   @Provides
   @ActivityScope
-  public NotesPresenter provideNotestPresenter() {
-    return new NotesPresenter(notesActivity);
+  public NotesPresenter provideNotesPresenter(NotesManager notesManager, RxUtils rxUtils) {
+    return new NotesPresenter(notesActivity, notesManager, rxUtils);
   }
 
 }
