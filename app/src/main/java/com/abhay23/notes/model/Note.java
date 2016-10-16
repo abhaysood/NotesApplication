@@ -1,10 +1,12 @@
 package com.abhay23.notes.model;
 
+import java.util.Date;
+
 public class Note {
   private String title;
   private String note;
   private String imagePath;
-  long createdAt;
+  Date createdAt;
 
   public Note() {
   }
@@ -21,7 +23,7 @@ public class Note {
     return imagePath;
   }
 
-  public long getCreatedAt() {
+  public Date getCreatedAt() {
     return createdAt;
   }
 }
