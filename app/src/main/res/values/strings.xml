@@ -3,4 +3,7 @@
   <string name="notes">Notes</string>
   <string name="add_a_note">Add a note</string>
   <string name="edit_note">Edit</string>
+  <string name="tap_above_to_add_a_picture">Tap above to add a picture</string>
+  <string name="title">Title</string>
+  <string name="description">Description</string>
 </resources>
