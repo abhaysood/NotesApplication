@@ -7,6 +7,7 @@ import com.abhay23.notes.model.NotesManager;
 import com.abhay23.notes.util.RxUtils;
 import java.util.List;
 import rx.Observable;
+import rx.Subscription;
 
 class NotesPresenter extends BasePresenter {
 
@@ -24,11 +25,13 @@ class NotesPresenter extends BasePresenter {
     view.initView();
 
     if (isNewLaunch) {
-      notesManager.getNotes()
+      Subscription subscription = notesManager.getNotes()
           .flatMap(Observable::from)
           .toSortedList(this::compareCreationDate)
           .compose(rxUtils.applySchedulers())
           .subscribe(this::onNotesLoaded, this::onErrorLoadingNotes);
+
+      addSubscription(subscription);
     }
   }
 
