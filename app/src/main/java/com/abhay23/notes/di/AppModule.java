@@ -1,7 +1,7 @@
 package com.abhay23.notes.di;
 
 import com.abhay23.notes.NotesApplication;
-import com.abhay23.notes.model.Database;
+import com.abhay23.notes.model.LocalDataStore;
 import com.abhay23.notes.model.NotesManager;
 import com.abhay23.notes.util.RxUtils;
 import dagger.Module;
@@ -16,12 +16,12 @@ import javax.inject.Singleton;
     this.application = application;
   }
 
-  @Singleton @Provides public NotesManager provideNotesManager(Database database) {
-    return new NotesManager(database);
+  @Singleton @Provides public NotesManager provideNotesManager(LocalDataStore localDataStore) {
+    return new NotesManager(localDataStore);
   }
 
-  @Singleton @Provides public Database provideDatabase() {
-    return new Database();
+  @Singleton @Provides public LocalDataStore provideDatabase() {
+    return new LocalDataStore();
   }
 
   @Singleton @Provides public RxUtils provideRxUtils() {

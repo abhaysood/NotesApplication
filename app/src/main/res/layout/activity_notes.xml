@@ -11,6 +11,13 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
-
+  <TextView
+      android:id="@+id/no_notes_error_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:text="@string/add_a_note"
+      android:visibility="gone"
+  />
 
 </LinearLayout>

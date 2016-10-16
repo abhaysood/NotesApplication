@@ -7,6 +7,7 @@
     android:orientation="horizontal">
 
   <ImageView
+      android:id="@+id/note_thumbnail"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_small"
@@ -34,7 +35,7 @@
         tools:text="Title"/>
 
     <TextView
-        android:id="@+id/note_text"
+        android:id="@+id/note_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/spacing_small"
@@ -44,6 +45,7 @@
         tools:text="Some very long description about the note which can only go max 2 lines and will ellipsize at the end."/>
 
     <TextView
+        android:id="@+id/note_created_at"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_tiny"

@@ -8,4 +8,8 @@ interface NotesView {
   void initView();
 
   void showNotes(@NonNull List<Note> notes);
+
+  void onNoteUpdated(@NonNull Note note);
+
+  void showNoNotesError();
 }

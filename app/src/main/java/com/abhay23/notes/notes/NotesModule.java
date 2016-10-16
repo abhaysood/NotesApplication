@@ -13,10 +13,12 @@ import dagger.Provides;
     this.notesActivity = notesActivity;
   }
 
-  @Provides
-  @ActivityScope
+  @Provides @ActivityScope
   public NotesPresenter provideNotesPresenter(NotesManager notesManager, RxUtils rxUtils) {
     return new NotesPresenter(notesActivity, notesManager, rxUtils);
   }
 
+  @Provides @ActivityScope public NotesAdapter provideNotesAdapter() {
+    return new NotesAdapter(notesActivity);
+  }
 }
