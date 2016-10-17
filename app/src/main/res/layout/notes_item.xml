@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:background="?selectableItemBackground"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/spacing_small"
+    android:paddingTop="@dimen/spacing_small">
 
   <ImageView
       android:id="@+id/note_thumbnail"
       android:layout_width="48dp"
       android:layout_height="48dp"
-      android:layout_marginTop="@dimen/spacing_small"
       android:layout_marginStart="@dimen/spacing_normal"
+      android:layout_marginTop="@dimen/spacing_small"
       tools:src="@mipmap/ic_launcher"/>
 
   <LinearLayout
