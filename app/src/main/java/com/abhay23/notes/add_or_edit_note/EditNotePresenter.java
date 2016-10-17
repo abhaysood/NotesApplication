@@ -85,10 +85,8 @@ public class EditNotePresenter extends BasePresenter {
   }
 
   public void restoreState(Bundle savedInstanceState) {
-    if (getPicturePath() != null) {
-      savedInstanceState.getString(SAVE_PICTURE_PATH, getPicturePath());
-      view.showImage(getPicturePath());
-    }
+    savedInstanceState.getString(SAVE_PICTURE_PATH, getPicturePath());
+    view.showImage(getPicturePath());
   }
 
   public void saveState(Bundle outState) {
