@@ -12,14 +12,17 @@ import butterknife.ButterKnife;
 import com.abhay23.notes.R;
 import com.abhay23.notes.model.Note;
 import com.bumptech.glide.Glide;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder> {
 
-  private final static String BASE_IMAGE_URL = "http://gojek-contacts-app.herokuapp.com";
   private List<Note> notes;
+  private SimpleDateFormat simpleDateFormat =
+      new SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.ENGLISH);
 
   private final OnItemClickListener onItemClickListener;
 
@@ -93,6 +96,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
   }
 
   private String getHumanReadableTime(Date date) {
-    return date.toString();
+    return simpleDateFormat.format(date);
   }
 }
