@@ -48,11 +48,11 @@ public class EditNotePresenter extends BasePresenter {
     if (noteId != -1) {
       Note note = new Note(noteId, title, description, imagePath, new Date());
       notesManager.updateNote(note);
+
     } else {
       Note note = new Note(System.currentTimeMillis(), title, description, imagePath, new Date());
       notesManager.saveNote(note);
     }
-
     view.killScreen();
   }
 
