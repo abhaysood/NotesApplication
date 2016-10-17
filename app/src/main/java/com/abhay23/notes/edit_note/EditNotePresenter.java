@@ -21,13 +21,13 @@ public class EditNotePresenter extends BasePresenter {
 
   @Override public void onViewCreated(boolean isNewLaunch) {
     view.initView();
+
     if (view.getNoteId() == -1) {
       view.setScreenTitle("Add Note");
       return;
     }
 
     view.setScreenTitle("Edit Note");
-
     if (isNewLaunch) {
       Subscription subscription = notesManager.loadNote(view.getNoteId())
           .compose(rxUtils.applySchedulers())
