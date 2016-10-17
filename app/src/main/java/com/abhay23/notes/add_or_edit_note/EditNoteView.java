@@ -9,10 +9,13 @@ public interface EditNoteView {
 
   void showNote(Note note);
 
+  void showImage(String path);
+
   void setScreenTitle(String title);
 
   void killScreen();
 
   void showErrorLoadingNote();
 
+  void openGallery();
 }

@@ -86,6 +86,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
       Glide.with(noteImageView.getContext())
           .load(note.getImagePath())
+          .placeholder(R.drawable.placeholder)
           .centerCrop()
           .into(noteImageView);
     }

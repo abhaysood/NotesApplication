@@ -8,8 +8,8 @@
 
   <ImageView
       android:id="@+id/note_thumbnail"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
       android:layout_marginTop="@dimen/spacing_small"
       android:layout_marginStart="@dimen/spacing_normal"
       tools:src="@mipmap/ic_launcher"/>
