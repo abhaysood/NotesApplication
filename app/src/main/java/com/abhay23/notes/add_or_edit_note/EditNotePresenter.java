@@ -27,6 +27,7 @@ public class EditNotePresenter extends BasePresenter {
 
     if (view.getNoteId() == -1) {
       view.setScreenTitle("Add Note");
+      view.showImage(null);
       return;
     }
 
@@ -46,10 +47,8 @@ public class EditNotePresenter extends BasePresenter {
   private void onNoteLoaded(Note note) {
     view.showNote(note);
     String imagePath = note.getImagePath();
-    if (imagePath != null) {
-      view.showImage(imagePath);
-      setPicturePath(imagePath);
-    }
+    view.showImage(imagePath);
+    setPicturePath(imagePath);
   }
 
   public void onSaveButtonClicked(long noteId, String title, String description) {

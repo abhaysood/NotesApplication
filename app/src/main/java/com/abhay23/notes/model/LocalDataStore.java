@@ -27,10 +27,6 @@ public class LocalDataStore {
     onNoteChangedRelay.call(note);
   }
 
-  public Observable<Note> subscribeToNoteChanges() {
-    return onNoteChangedRelay;
-  }
-
   @Nullable public Note getNote(long noteId) {
     for (Note note : notes) {
       if (note.getId() == noteId) {
@@ -61,5 +57,11 @@ public class LocalDataStore {
         return;
       }
     }
+
+    throw new IllegalStateException("Could not delete, note does not exist " + noteId);
+  }
+
+  public Observable<Note> subscribeToNoteChanges() {
+    return onNoteChangedRelay;
   }
 }
