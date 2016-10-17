@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,6 +26,7 @@ import com.abhay23.notes.BasePresenter;
 import com.abhay23.notes.R;
 import com.abhay23.notes.di.Injector;
 import com.abhay23.notes.model.Note;
+import com.abhay23.notes.util.GrayFilterTouchImageView;
 import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.widget.RxTextView;
 import javax.inject.Inject;
@@ -44,7 +44,7 @@ public class EditNoteActivity extends BaseActivity implements EditNoteView {
   @Bind(R.id.et_description) EditText etNoteDescription;
   @Bind(R.id.til_description) TextInputLayout tilNoteDescription;
   @Bind(R.id.btn_save) Button btnSave;
-  @Bind(R.id.note_image) ImageView noteImage;
+  @Bind(R.id.note_image) GrayFilterTouchImageView noteImage;
 
   public static void start(Context context, long id) {
     Intent intent = new Intent(context, EditNoteActivity.class);
