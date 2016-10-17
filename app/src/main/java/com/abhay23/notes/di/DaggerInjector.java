@@ -2,9 +2,9 @@ package com.abhay23.notes.di;
 
 import android.app.Application;
 import com.abhay23.notes.NotesApplication;
-import com.abhay23.notes.edit_note.DaggerEditNoteComponent;
-import com.abhay23.notes.edit_note.EditNoteActivity;
-import com.abhay23.notes.edit_note.EditNoteModule;
+import com.abhay23.notes.add_or_edit_note.DaggerEditNoteComponent;
+import com.abhay23.notes.add_or_edit_note.EditNoteActivity;
+import com.abhay23.notes.add_or_edit_note.EditNoteModule;
 import com.abhay23.notes.notes.DaggerNotesComponent;
 import com.abhay23.notes.notes.NotesActivity;
 import com.abhay23.notes.notes.NotesModule;
