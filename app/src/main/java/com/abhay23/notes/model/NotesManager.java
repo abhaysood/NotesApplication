@@ -1,13 +1,11 @@
 package com.abhay23.notes.model;
 
-import android.util.Log;
 import com.jakewharton.rxrelay.PublishRelay;
 import java.util.List;
 import rx.Observable;
 
 public class NotesManager {
 
-  public static String TAG = "NotesManager";
   private final PublishRelay<Note> onNoteChangedRelay = PublishRelay.create();
 
   private final LocalDataStore localDataStore;
@@ -30,10 +28,7 @@ public class NotesManager {
   }
 
   private void subscribeToLocalStoreNoteChanges() {
-    localDataStore.subscribeToNoteChanges().subscribe(note -> {
-      onNoteChangedRelay.call(note);
-      Log.d(TAG, "subscribeToLocalStoreNoteChanges: onNoteChanged");
-    });
+    localDataStore.subscribeToNoteChanges().subscribe(onNoteChangedRelay::call);
   }
 
   public void saveNote(Note note) {

@@ -9,12 +9,11 @@ import rx.Observable;
 
 public class LocalDataStore {
 
-  public static String TAG = "LocalDataStore";
   private ArrayList<Note> notes;
 
   public LocalDataStore() {
     notes = new ArrayList<>();
-    notes.add(new Note(0, "title", "title", "title", new Date()));
+    notes.add(new Note(0, "Ok Google", "Please take a note.", null, new Date()));
   }
 
   private final PublishRelay<Note> onNoteChangedRelay = PublishRelay.create();
@@ -51,8 +50,7 @@ public class LocalDataStore {
       }
     }
 
-    throw new IllegalStateException(
-        "Could not update note as it does not exist " + note.toString());
+    throw new IllegalStateException("Could not update, note does not exist " + note.toString());
   }
 
   public void deleteNote(long noteId) {
