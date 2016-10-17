@@ -11,7 +11,8 @@
       android:theme="@style/AppTheme">
 
     <activity android:name=".notes.NotesActivity"
-        android:label="@string/notes">
+        android:label="@string/notes"
+        android:launchMode="singleTop">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -20,7 +21,8 @@
     </activity>
 
     <activity android:name=".edit_note.EditNoteActivity"
-        android:label="@string/edit_note">
+        android:label="@string/edit_note"
+        android:parentActivityName=".notes.NotesActivity">
     </activity>
   </application>
 

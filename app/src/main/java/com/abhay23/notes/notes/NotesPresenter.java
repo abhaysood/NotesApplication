@@ -33,9 +33,9 @@ class NotesPresenter extends BasePresenter {
 
   private void subscribeToChanges() {
     Subscription subscription =
-        notesManager.subscribeToNoteChanges().compose(rxUtils.applySchedulers()).doOnNext(note -> {
-          Log.d(TAG, "subscribeToChanges: note added: " + note.toString());
-        }).subscribe(view::onNoteUpdated, Throwable::printStackTrace);
+        notesManager.subscribeToNoteChanges().compose(rxUtils.applySchedulers()).subscribe(note -> {
+          loadNotes();  // Reload notes
+        }, Throwable::printStackTrace);
     addSubscription(subscription);
   }
 
@@ -74,5 +74,9 @@ class NotesPresenter extends BasePresenter {
       throw Exceptions.propagate(new NoNotesAvailableException());
     }
     return notes;
+  }
+
+  public void onAddNewNoteClick() {
+    view.openAddNewNoteScreen();
   }
 }

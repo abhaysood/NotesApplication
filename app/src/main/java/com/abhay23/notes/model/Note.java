@@ -49,6 +49,30 @@ public class Note implements Parcelable {
         '}';
   }
 
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Note)) return false;
+
+    Note note1 = (Note) o;
+
+    if (id != note1.id) return false;
+    if (title != null ? !title.equals(note1.title) : note1.title != null) return false;
+    if (note != null ? !note.equals(note1.note) : note1.note != null) return false;
+    if (imagePath != null ? !imagePath.equals(note1.imagePath) : note1.imagePath != null) {
+      return false;
+    }
+    return createdAt != null ? createdAt.equals(note1.createdAt) : note1.createdAt == null;
+  }
+
+  @Override public int hashCode() {
+    int result = (int) (id ^ (id >>> 32));
+    result = 31 * result + (title != null ? title.hashCode() : 0);
+    result = 31 * result + (note != null ? note.hashCode() : 0);
+    result = 31 * result + (imagePath != null ? imagePath.hashCode() : 0);
+    result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+    return result;
+  }
+
   @Override public int describeContents() {
     return 0;
   }

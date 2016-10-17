@@ -3,7 +3,11 @@
   <string name="notes">Notes</string>
   <string name="add_a_note">Add a note</string>
   <string name="edit_note">Edit</string>
-  <string name="tap_above_to_add_a_picture">Tap above to add a picture</string>
+  <string name="tap_above_to_add_a_picture">Tap above to add/edit a picture</string>
   <string name="title">Title</string>
   <string name="description">Description</string>
+  <string name="error_field_required">This is a required field</string>
+  <string name="save">Save</string>
+  <string name="action_add_note">Add Note</string>
+  <string name="action_delete_note">Delete Note</string>>
 </resources>

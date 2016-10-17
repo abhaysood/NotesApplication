@@ -12,4 +12,6 @@ interface NotesView {
   void onNoteUpdated(@NonNull Note note);
 
   void showNoNotesError();
+
+  void openAddNewNoteScreen();
 }

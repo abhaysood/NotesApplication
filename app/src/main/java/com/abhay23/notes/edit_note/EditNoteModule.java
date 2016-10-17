@@ -17,6 +17,6 @@ import dagger.Provides;
   @ActivityScope
   @Provides
   public EditNotePresenter provideEditNotePresenter(NotesManager notesManager, RxUtils rxUtils) {
-    return new EditNotePresenter(notesManager, rxUtils);
+    return new EditNotePresenter(editNoteActivity, notesManager, rxUtils);
   }
 }

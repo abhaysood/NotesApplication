@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -70,5 +72,25 @@ public class NotesActivity extends BaseActivity
 
   @Override public void onClick(Note note, int position) {
     EditNoteActivity.start(this, note.getId());
+  }
+
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_main, menu);
+    return true;
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_add_note:
+        presenter.onAddNewNoteClick();
+        return true;
+
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
+  @Override public void openAddNewNoteScreen() {
+    EditNoteActivity.start(this, -1);
   }
 }
