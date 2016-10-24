@@ -7,6 +7,6 @@ The app allows you to see a list of notes. You can also add, delete and modify a
 - If the user deletes the image from local storage, the app will crash
 - Tests
 - Better error handling
-- Add persistent storage
+- ~~Add persistent storage~~
 - Connect with a remote server, maybe Firebase!
 - UI improvements
