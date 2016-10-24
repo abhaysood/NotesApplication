@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
@@ -32,12 +33,12 @@ import com.jakewharton.rxbinding.widget.RxTextView;
 import javax.inject.Inject;
 import rx.Observable;
 
-public class EditNoteActivity extends BaseActivity implements EditNoteView {
+public class AddEditNoteActivity extends BaseActivity implements AddEditNoteView {
   private static final String EXTRA_NOTE_ID = "arg_note_id";
   private static final int REQUEST_GALLERY = 101;
   private static final int REQUEST_GALLERY_PERMISSION = 123;
 
-  @Inject EditNotePresenter presenter;
+  @Inject AddEditNotePresenter presenter;
 
   @Bind(R.id.et_title) EditText etNoteTitle;
   @Bind(R.id.til_title) TextInputLayout tilNoteTitle;
@@ -47,15 +48,21 @@ public class EditNoteActivity extends BaseActivity implements EditNoteView {
   @Bind(R.id.note_image) GrayFilterTouchImageView noteImage;
 
   public static void start(Context context, long id) {
-    Intent intent = new Intent(context, EditNoteActivity.class);
+    Intent intent = new Intent(context, AddEditNoteActivity.class);
     intent.putExtra(EXTRA_NOTE_ID, id);
     context.startActivity(intent);
   }
 
   @Override public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_edit_note);
     ButterKnife.bind(this);
-    super.onCreate(savedInstanceState);
+    presenter.onViewCreated();
+  }
+
+  @Override protected void onResume() {
+    super.onResume();
+    presenter.onViewReady();
   }
 
   @Override protected void inject(Injector injector) {
@@ -124,7 +131,7 @@ public class EditNoteActivity extends BaseActivity implements EditNoteView {
     Glide.with(this).load(path).placeholder(R.drawable.placeholder).centerCrop().into(noteImage);
   }
 
-  @Override public void setScreenTitle(String title) {
+  @Override public void setScreenTitle(@StringRes int title) {
     setTitle(title);
   }
 

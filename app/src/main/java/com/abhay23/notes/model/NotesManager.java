@@ -1,38 +1,29 @@
 package com.abhay23.notes.model;
 
-import com.jakewharton.rxrelay.PublishRelay;
+import com.abhay23.notes.db.LocalDataStore;
+import com.abhay23.notes.exceptions.NoNotesAvailableException;
 import java.util.List;
 import rx.Observable;
+import rx.exceptions.Exceptions;
 
-public class NotesManager {
-
-  private final PublishRelay<Note> onNoteChangedRelay = PublishRelay.create();
+public final class NotesManager {
 
   private final LocalDataStore localDataStore;
 
   public NotesManager(LocalDataStore localDataStore) {
     this.localDataStore = localDataStore;
-    subscribeToLocalStoreNoteChanges();
   }
 
   public Observable<List<Note>> loadNotes() {
-    return Observable.fromCallable(localDataStore::getNotes);
+    return localDataStore.getNotes().map(this::verifyNotesExistOrThrow);
   }
 
   public Observable<Note> loadNote(long noteId) {
-    return Observable.fromCallable(() -> localDataStore.getNote(noteId));
+    return localDataStore.getNote(noteId);
   }
 
-  public Observable<Note> subscribeToNoteChanges() {
-    return onNoteChangedRelay;
-  }
-
-  private void subscribeToLocalStoreNoteChanges() {
-    localDataStore.subscribeToNoteChanges().subscribe(onNoteChangedRelay::call);
-  }
-
-  public void saveNote(Note note) {
-    localDataStore.saveNote(note);
+  public void createNote(Note note) {
+    localDataStore.createNote(note);
   }
 
   public void updateNote(Note note) {
@@ -41,5 +32,12 @@ public class NotesManager {
 
   public void deleteNote(long noteId) {
     localDataStore.deleteNote(noteId);
+  }
+
+  private List<Note> verifyNotesExistOrThrow(List<Note> notes) {
+    if (notes == null || notes.isEmpty()) {
+      throw Exceptions.propagate(new NoNotesAvailableException());
+    }
+    return notes;
   }
 }

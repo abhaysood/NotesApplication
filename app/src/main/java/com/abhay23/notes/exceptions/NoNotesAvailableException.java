@@ -1,4 +1,4 @@
 package com.abhay23.notes.exceptions;
 
-public class NoNotesAvailableException extends Exception {
+public final class NoNotesAvailableException extends Exception {
 }

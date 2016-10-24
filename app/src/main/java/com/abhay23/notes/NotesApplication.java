@@ -4,7 +4,7 @@ import android.app.Application;
 import com.abhay23.notes.di.DaggerInjector;
 import com.abhay23.notes.di.Injector;
 
-public class NotesApplication extends Application {
+public final class NotesApplication extends Application {
 
   private Injector daggerInjector;
 
