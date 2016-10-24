@@ -2,14 +2,14 @@ package com.abhay23.notes.di;
 
 import android.app.Application;
 import com.abhay23.notes.NotesApplication;
-import com.abhay23.notes.add_or_edit_note.DaggerEditNoteComponent;
-import com.abhay23.notes.add_or_edit_note.EditNoteActivity;
-import com.abhay23.notes.add_or_edit_note.EditNoteModule;
+import com.abhay23.notes.add_or_edit_note.AddEditNoteActivity;
+import com.abhay23.notes.add_or_edit_note.AddEditNoteModule;
+import com.abhay23.notes.add_or_edit_note.DaggerAddEditNoteComponent;
 import com.abhay23.notes.notes.DaggerNotesComponent;
 import com.abhay23.notes.notes.NotesActivity;
 import com.abhay23.notes.notes.NotesModule;
 
-public class DaggerInjector implements Injector {
+public final class DaggerInjector implements Injector {
   private static AppComponent appComponent;
 
   public void init(Application application) {
@@ -26,11 +26,11 @@ public class DaggerInjector implements Injector {
         .inject(notesActivity);
   }
 
-  @Override public void inject(EditNoteActivity editNoteActivity) {
-    DaggerEditNoteComponent.builder()
-        .editNoteModule(new EditNoteModule(editNoteActivity))
+  @Override public void inject(AddEditNoteActivity addEditNoteActivity) {
+    DaggerAddEditNoteComponent.builder()
+        .addEditNoteModule(new AddEditNoteModule(addEditNoteActivity))
         .appComponent(appComponent)
         .build()
-        .inject(editNoteActivity);
+        .inject(addEditNoteActivity);
   }
 }

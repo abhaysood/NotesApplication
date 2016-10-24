@@ -5,8 +5,6 @@ import com.abhay23.notes.model.Note;
 import java.util.List;
 
 interface NotesView {
-  void initView();
-
   void showNotes(@NonNull List<Note> notes);
 
   void onNoteUpdated(@NonNull Note note);

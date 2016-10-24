@@ -12,13 +12,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     inject(((NotesApplication) getApplication()).getDaggerInjector());
-    getPresenter().onViewCreated(savedInstanceState == null);
   }
 
   protected abstract void inject(Injector appComponent);
 
-  @Override @CallSuper protected void onDestroy() {
-    super.onDestroy();
+  @Override @CallSuper protected void onPause() {
+    super.onPause();
     getPresenter().unsubscribe();
   }
 

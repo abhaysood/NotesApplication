@@ -2,42 +2,40 @@ package com.abhay23.notes.add_or_edit_note;
 
 import android.os.Bundle;
 import com.abhay23.notes.BasePresenter;
+import com.abhay23.notes.R;
 import com.abhay23.notes.model.Note;
 import com.abhay23.notes.model.NotesManager;
-import com.abhay23.notes.util.RxUtils;
 import java.util.Date;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 
-public class EditNotePresenter extends BasePresenter {
+public class AddEditNotePresenter extends BasePresenter {
 
   private static final String SAVE_PICTURE_PATH = "save_picture_path";
-  private final EditNoteView view;
+  private final AddEditNoteView view;
   private final NotesManager notesManager;
-  private final RxUtils rxUtils;
   private String picturePath;
 
-  public EditNotePresenter(EditNoteView view, NotesManager notesManager, RxUtils rxUtils) {
+  public AddEditNotePresenter(AddEditNoteView view, NotesManager notesManager) {
     this.view = view;
     this.notesManager = notesManager;
-    this.rxUtils = rxUtils;
   }
 
-  @Override public void onViewCreated(boolean isNewLaunch) {
+  public void onViewCreated() {
     view.initView();
-
     if (view.getNoteId() == -1) {
-      view.setScreenTitle("Add Note");
+      view.setScreenTitle(R.string.add_note);
       view.showImage(null);
-      return;
+    } else {
+      view.setScreenTitle(R.string.edit_note);
     }
+  }
 
-    view.setScreenTitle("Edit Note");
-    if (isNewLaunch) {
-      Subscription subscription = notesManager.loadNote(view.getNoteId())
-          .compose(rxUtils.applySchedulers())
-          .subscribe(this::onNoteLoaded, this::handleNoteLoadingError);
-      addSubscription(subscription);
-    }
+  public void onViewReady() {
+    Subscription subscription = notesManager.loadNote(view.getNoteId())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(this::onNoteLoaded, this::handleNoteLoadingError);
+    addSubscription(subscription);
   }
 
   private void handleNoteLoadingError(Throwable throwable) {
@@ -58,7 +56,7 @@ public class EditNotePresenter extends BasePresenter {
     } else {
       Note note =
           new Note(System.currentTimeMillis(), title, description, getPicturePath(), new Date());
-      notesManager.saveNote(note);
+      notesManager.createNote(note);
     }
     view.killScreen();
   }

@@ -18,6 +18,4 @@ public abstract class BasePresenter {
   protected void addSubscription(Subscription subscription) {
     compositeSubscription.add(subscription);
   }
-
-  public abstract void onViewCreated(boolean isNewLaunch);
 }

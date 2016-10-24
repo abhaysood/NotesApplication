@@ -22,7 +22,7 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".add_or_edit_note.EditNoteActivity"
+    <activity android:name=".add_or_edit_note.AddEditNoteActivity"
         android:label="@string/edit_note"
         android:parentActivityName=".notes.NotesActivity">
     </activity>
